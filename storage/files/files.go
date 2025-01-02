@@ -58,9 +58,6 @@ func (s Storage) PickRandom(userName string) (page *storage.Page, err error) {
 
 	path := filepath.Join(s.basePath, userName)
 
-	// 1. check user folder
-	// 2. create folder
-
 	files, err := os.ReadDir(path)
 	if err != nil {
 		return nil, err
@@ -70,8 +67,12 @@ func (s Storage) PickRandom(userName string) (page *storage.Page, err error) {
 		return nil, storage.ErrNoSavedPages
 	}
 
-	rand.Seed(time.Now().UnixNano())
-	n := rand.Intn(len(files))
+	// Создаём локальный генератор случайных чисел
+	source := rand.NewSource(time.Now().UnixNano())
+	r := rand.New(source)
+
+	// Генерируем случайный индекс
+	n := r.Intn(len(files))
 
 	file := files[n]
 

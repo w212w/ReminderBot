@@ -57,7 +57,7 @@ func (c *Client) Updates(ctx context.Context, offset int, limit int) (updates []
 
 }
 
-func (c *Client) sendMessage(ctx context.Context, chatID int, text string) error {
+func (c *Client) SendMessage(ctx context.Context, chatID int, text string) error {
 	q := url.Values{}
 	q.Add("chat_id", strconv.Itoa(chatID))
 	q.Add("text", text)

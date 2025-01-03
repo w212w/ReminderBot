@@ -8,6 +8,7 @@ import (
 	"io"
 
 	"github.com/w212w/ReminderBot/lib/e"
+	_ "modernc.org/sqlite"
 )
 
 type Storage interface {

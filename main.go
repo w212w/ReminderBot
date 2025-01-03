@@ -9,6 +9,7 @@ import (
 	eventconsumer "github.com/w212w/ReminderBot/consumer/event-consumer"
 	"github.com/w212w/ReminderBot/events/telegram"
 	"github.com/w212w/ReminderBot/storage/sqlite"
+	_ "modernc.org/sqlite"
 )
 
 const (

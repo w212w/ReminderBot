@@ -8,14 +8,14 @@
 
 ## 📦 **Folder Structure**
 
-📂 ReminderBot
+```📂 ReminderBot
 ├── 📂 cmd              # Entry point for the bot
 ├── 📂 clients          # Telegram client implementation
 ├── 📂 consumer         # Event consumer logic
 ├── 📂 events           # Event handlers for Telegram updates
 ├── 📂 storage          # SQLite storage logic
 ├── .env                # Environment variables (ignored in Git)
-└── README.md           # Project documentation
+└── README.md           # Project documentation```
 
 ## 🎯 **Features**
 

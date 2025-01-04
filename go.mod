@@ -2,7 +2,10 @@ module github.com/w212w/ReminderBot
 
 go 1.23.4
 
-require modernc.org/sqlite v1.34.4
+require (
+	github.com/joho/godotenv v1.5.1
+	modernc.org/sqlite v1.34.4
+)
 
 require (
 	github.com/dustin/go-humanize v1.0.1 // indirect

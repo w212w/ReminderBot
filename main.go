@@ -2,9 +2,10 @@ package main
 
 import (
 	"context"
-	"flag"
 	"log"
+	"os"
 
+	"github.com/joho/godotenv"
 	tgClient "github.com/w212w/ReminderBot/clients/telegram"
 	eventconsumer "github.com/w212w/ReminderBot/consumer/event-consumer"
 	"github.com/w212w/ReminderBot/events/telegram"
@@ -19,6 +20,10 @@ const (
 )
 
 func main() {
+
+	if err := godotenv.Load(); err != nil {
+		log.Println("No .env file found")
+	}
 	//s := files.New(storagePath)
 	s, err := sqlite.New(sqliteStoragePath)
 	if err != nil {
@@ -44,17 +49,10 @@ func main() {
 }
 
 func mustToken() string {
-	token := flag.String(
-		"tg-bot-token",
-		"",
-		"token for access to telegram bot",
-	)
-
-	flag.Parse()
-
-	if *token == "" {
+	token := os.Getenv("TG_BOT_TOKEN")
+	if token == "" {
 		log.Fatal("token is not specified")
 	}
 
-	return *token
+	return token
 }

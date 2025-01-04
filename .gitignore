@@ -3,5 +3,6 @@
 .idea/
 .vscode/
 *.swp
+.env
 
 data/sqlite/

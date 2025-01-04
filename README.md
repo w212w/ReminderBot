@@ -8,7 +8,14 @@
 
 ## 📦 **Folder Structure**
 
-📂 ReminderBot ├── 📂 cmd # Entry point for the bot ├── 📂 clients # Telegram client implementation ├── 📂 consumer # Event consumer logic ├── 📂 events # Event handlers for Telegram updates ├── 📂 storage # SQLite storage logic ├── .env # Environment variables (ignored in Git) └── README.md # Project documentation
+📂 ReminderBot
+├── 📂 cmd              # Entry point for the bot
+├── 📂 clients          # Telegram client implementation
+├── 📂 consumer         # Event consumer logic
+├── 📂 events           # Event handlers for Telegram updates
+├── 📂 storage          # SQLite storage logic
+├── .env                # Environment variables (ignored in Git)
+└── README.md           # Project documentation
 
 ## 🎯 **Features**
 
@@ -33,7 +40,8 @@ Everything is stored locally or in a private database—your reading list is onl
 ---
 
 ## 🚀 **How to Use ReminderBot**
-### [BOT](t.me/ReminderGolangBot)
+### [BOT](https://t.me/ReminderGolangBot)
+
 
 1. **Start a Chat**: Add the bot to your Telegram and start a conversation.  
 2. **Save a Page**: Send a link to the bot.

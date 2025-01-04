@@ -33,7 +33,7 @@ Everything is stored locally or in a private database—your reading list is onl
 ---
 
 ## 🚀 **How to Use ReminderBot**
-### t.me/ReminderGolangBot
+### [BOT](t.me/ReminderGolangBot)
 
 1. **Start a Chat**: Add the bot to your Telegram and start a conversation.  
 2. **Save a Page**: Send a link to the bot.

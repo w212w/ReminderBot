@@ -10,7 +10,9 @@
 
 ```
 📂 ReminderBot
-├── 📂 cmd              # Entry point for the bot
+├── main.go              # Entry point for the bot
+├── 📂 data             # database (ignored in Git)
+├── 📂 lib              # Different projects libraries
 ├── 📂 clients          # Telegram client implementation
 ├── 📂 consumer         # Event consumer logic
 ├── 📂 events           # Event handlers for Telegram updates
@@ -27,9 +29,6 @@ Just send a link to the bot, and it will securely save the page to your personal
 🎲 **Get Random Recommendations**  
 Want to read something now? Use the `/rnd` command, and the bot will offer you a random page from your list.  
 ⚠️ *Caution: Once a page is suggested, it will be removed from your list.*  
-
-🔒 **Your Data is Private**  
-Everything is stored locally or in a private database—your reading list is only yours!  
 
 ---
 

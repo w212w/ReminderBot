@@ -100,3 +100,24 @@ func (c *Client) doRequest(ctx context.Context, method string, query url.Values)
 
 	return body, nil
 }
+
+func (c *Client) SendMessageWithMarkup(ctx context.Context, chatID int, text string, markup interface{}) error {
+
+	q := url.Values{}
+	q.Add("chat_id", strconv.Itoa(chatID))
+	q.Add("text", text)
+
+	markupJSON, err := json.Marshal(markup)
+	if err != nil {
+		return e.Wrap("can't serialize markup", err)
+	}
+
+	q.Add("reply_markup", string(markupJSON))
+
+	_, err = c.doRequest(ctx, sendMessageMethod, q)
+	if err != nil {
+		return e.Wrap("can't send message with markup", err)
+	}
+
+	return nil
+}

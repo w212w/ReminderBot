@@ -7,14 +7,16 @@ import (
 	"net/url"
 	"strings"
 
+	tg "github.com/w212w/ReminderBot/clients/telegram"
 	"github.com/w212w/ReminderBot/lib/e"
 	"github.com/w212w/ReminderBot/storage"
 )
 
 const (
-	RndCmd   = "/rnd"
-	HelpCmd  = "/help"
-	StartCmd = "/start"
+	RndCmd      = "Get random page"
+	HelpCmd     = "Help"
+	StartCmd    = "Start"
+	CommandsCmd = "/commands"
 )
 
 func (p *Processor) doCmd(ctx context.Context, text string, chatID int, username string) error {
@@ -32,7 +34,12 @@ func (p *Processor) doCmd(ctx context.Context, text string, chatID int, username
 	case HelpCmd:
 		return p.sendHelp(ctx, chatID)
 	case StartCmd:
-		return p.sendHello(ctx, chatID)
+		err := p.sendHello(ctx, chatID)
+		if err != nil {
+			return err
+		}
+
+		return p.sendWithReplyButtons(ctx, chatID)
 	default:
 		return p.tg.SendMessage(ctx, chatID, msgUnknownCommand)
 	}
@@ -99,4 +106,24 @@ func isURL(text string) bool {
 	u, err := url.Parse(text)
 
 	return err == nil && u.Host != ""
+}
+
+func (p *Processor) sendWithReplyButtons(ctx context.Context, chatID int) error {
+	buttons := [][]tg.KeyboardButton{
+		{
+			{Text: "Help"},
+			{Text: "Get random page"},
+		},
+		{
+			{Text: "Start"},
+		},
+	}
+
+	keyboard := tg.ReplyKeyboardMarkup{
+		Keyboard:        buttons,
+		ResizeKeyboard:  true,
+		OneTimeKeyboard: false,
+	}
+
+	return p.tg.SendMessageWithMarkup(ctx, chatID, msgCommands, keyboard)
 }
